@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SnakeWPF_Rusanov
+namespace SnakeWPF_Rusanov.Pages
 {
     /// <summary>
     /// Логика взаимодействия для Home.xaml
