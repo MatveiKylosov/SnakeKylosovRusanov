@@ -117,7 +117,7 @@ namespace SnakeWPF_Rusanov
 
                 sender.Send(bytes, bytes.Length, endPoint);
             }
-            catch
+            catch (Exception ex)
             {
                 Debug.WriteLine("Возникло исключение: " + ex.ToString() + "\n " + ex.Message);
             }
