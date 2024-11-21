@@ -31,6 +31,29 @@ namespace Snake_Kylosov
             SW.Close();
         }
 
+        public static void LoadLeaders()
+        {
+            if (File.Exists("./leaders.txt"))
+            {
+                StreamReader SR = new StreamReader("./leaders.txt");
+                string json = SR.ReadLine();
+                SR.Close();
+                if (!string.IsNullOrEmpty(json))
+                {
+                    Leaders = JsonConvert.DeserializeObject<List<Leaders>>(json);
+                }
+                else
+                {
+                    Leaders = new List<Leaders>();
+                }
+            }
+            else 
+            {
+                Leaders = new List<Leaders> { };
+            }
+
+        }
+
         public static void Timer()
         {
             Thread.Sleep(100);
