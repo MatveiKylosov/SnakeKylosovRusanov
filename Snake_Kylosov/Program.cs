@@ -19,6 +19,25 @@ namespace Snake_Kylosov
         private static int localPort = 5001;
         public static int MaxSpeed = 15;
 
+        public static int AddSnake()
+        {
+            ViewModelGames viewModelGamesPlayer = new ViewModelGames();
+            viewModelGamesPlayer.SnakesPlayers = new Snakes()
+            {
+                Points = new List<Snakes.Point>() 
+                {
+                    new Snakes.Point() {X = 30, Y = 10 },
+                    new Snakes.Point() {X = 20, Y = 10 },
+                    new Snakes.Point() {X = 10, Y = 10 },
+                },
+                direction = Snakes.Direction.Start
+            };
+
+            viewModelGamesPlayer.Points = new Snakes.Point(new Random().Next(10, 783), new Random().Next(10, 410));
+            viewModelGames.Add(viewModelGamesPlayer);
+            return viewModelGames.FindIndex(x => x == viewModelGamesPlayer);
+        }
+
         private static void Send()
         {
             foreach (ViewModelUserSettings User in remoteIPAddress) {
