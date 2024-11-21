@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Configuration;
@@ -22,6 +23,13 @@ namespace Snake_Kylosov
         private static int localPort = 5001;
         public static int MaxSpeed = 15;
 
+        public static void SaveLeaders()
+        {
+            string json = JsonConvert.SerializeObject(Leaders);
+            StreamWriter SW = new StreamWriter("./leaders.txt");
+            SW.WriteLine(json);
+            SW.Close();
+        }
 
         public static void Timer()
         {
