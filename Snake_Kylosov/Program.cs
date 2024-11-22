@@ -199,6 +199,7 @@ namespace Snake_Kylosov
 
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine($"Отправил данные пользователю {User.IPAddress}:{User.Port}");
+                    Console.WriteLine($"{JsonConvert.SerializeObject(viewModelGames)}\n\n\n");
                 }
                 catch (Exception ex)
                 {
@@ -233,9 +234,9 @@ namespace Snake_Kylosov
                         string[] dataMessage = returnData.ToString().Split('|');
                         ViewModelUserSettings viewModelUserSettings = JsonConvert.DeserializeObject<ViewModelUserSettings>(dataMessage[1]);
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine($"Подключился пользователь: {viewModelUserSettings.IPAddress}:{viewModelUserSettings.Port}");
                         remoteIPAddress.Add(viewModelUserSettings);
                         viewModelUserSettings.IdSnake = AddSnake();
+                        Console.WriteLine($"Подключился пользователь: {viewModelUserSettings.IPAddress}:{viewModelUserSettings.Port}, id: {viewModelUserSettings.IdSnake}");
                         viewModelGames[viewModelUserSettings.IdSnake].IdSnake = viewModelUserSettings.IdSnake;
                     }
                     else
