@@ -15,7 +15,7 @@
         <Grid>
             <Grid Width="320" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid.Background>
-                    <ImageBrush ImageSource="/SnakeWPF_Rusanov;component/Image/background_2.jpg"/>
+                    <ImageBrush ImageSource="/SnakeWPF_Rusanov;component/Image/background_2.png" Viewbox="0.15,0.15 0.7,0.7"/>
                 </Grid.Background>
                 <Label
                     x:Name="name"
