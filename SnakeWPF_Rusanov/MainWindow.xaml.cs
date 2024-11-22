@@ -64,9 +64,9 @@ namespace SnakeWPF_Rusanov
                 startAnimation.From = 0;
                 startAnimation.To = 1;
                 startAnimation.Duration = TimeSpan.FromSeconds(0.6);
-                frame.BeginAnimation(OpacityProperty, startAnimation);
+                frame.BeginAnimation(OpacityProperty, endAnimation);
             };
-
+            frame.BeginAnimation(OpacityProperty, startAnimation);
         }
 
         public void Receiver()
@@ -81,7 +81,7 @@ namespace SnakeWPF_Rusanov
                     byte[] receiveBytes = receivingUDPClient.Receive(
                         ref RemoteIpEndPoint);
 
-                    string reurnData = Encoding.UTF8.GetString(receiveBytes);
+                    string returnData = Encoding.UTF8.GetString(receiveBytes);
                     if (ViewModelGames == null)
                     {
                         Dispatcher.Invoke(() =>
@@ -89,7 +89,7 @@ namespace SnakeWPF_Rusanov
                             OpenPage(Game);
                         });
                     }
-                    ViewModelGames = JsonConvert.DeserializeObject<ViewModelGames>(reurnData.ToString());
+                    ViewModelGames = JsonConvert.DeserializeObject<ViewModelGames>(returnData.ToString());
                     if (ViewModelGames.SnakesPlayers.GameOver)
                     {
                         Dispatcher.Invoke(() =>
