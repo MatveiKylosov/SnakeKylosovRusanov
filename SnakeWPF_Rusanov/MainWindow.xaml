@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:SnakeWPF_Rusanov"
         KeyUp="EventKeyUp"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Frame x:Name="frame" NavigationUIVisibility="Hidden"/>
