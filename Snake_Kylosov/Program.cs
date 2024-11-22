@@ -197,9 +197,13 @@ namespace Snake_Kylosov
 
                     sender.Send(bytes, bytes.Length, endPoint);
 
+                    bytes = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(viewModelGames.FindAll(x => x.IdSnake != User.IdSnake)));
+                    sender.Send(bytes, bytes.Length, endPoint);
+
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine($"Отправил данные пользователю {User.IPAddress}:{User.Port}");
                     Console.WriteLine($"{JsonConvert.SerializeObject(viewModelGames)}\n\n\n");
+
                 }
                 catch (Exception ex)
                 {

@@ -105,6 +105,69 @@ namespace SnakeWPF_Rusanov.Pages
                     Fill = myBrush,
                 };
                 canvas.Children.Add(points);
+
+                //another
+                foreach(var x in MainWindow.mainWindow.ViewModelGamesList)
+                {
+                    for (int iPoint = x.SnakesPlayers.Points.Count - 1; iPoint >= 0; iPoint--)
+                    {
+                        Snakes.Point SnakePoint = x.SnakesPlayers.Points[iPoint];
+
+                        if (iPoint != 0)
+                        {
+                            Snakes.Point NextSnakePoint = x.SnakesPlayers.Points[iPoint - 1];
+                            if (SnakePoint.X > NextSnakePoint.X || SnakePoint.X < NextSnakePoint.X)
+                            {
+                                if (iPoint % 2 == 0)
+                                {
+                                    if (StepCadr % 2 == 0)
+                                        SnakePoint.Y -= 1;
+                                    else
+                                        SnakePoint.Y += 1;
+                                }
+                                else
+                                {
+                                    if (StepCadr % 2 == 0)
+                                        SnakePoint.Y += 1;
+                                    else
+                                        SnakePoint.Y -= 1;
+                                }
+                            }
+                            else if (SnakePoint.Y > NextSnakePoint.Y || SnakePoint.Y < NextSnakePoint.Y)
+                            {
+                                if (iPoint % 2 == 0)
+                                {
+                                    if (StepCadr % 2 == 0)
+                                        SnakePoint.X -= 1;
+                                    else
+                                        SnakePoint.X += 1;
+                                }
+                                else
+                                {
+                                    if (StepCadr % 2 == 0)
+                                        SnakePoint.X += 1;
+                                    else
+                                        SnakePoint.X -= 1;
+                                }
+                            }
+                        }
+                        Brush Color;
+                        if (iPoint == 0)
+                            Color = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 0, 127, 14));
+                        else
+                            Color = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 0, 198, 19));
+
+                        Ellipse ellipse = new Ellipse()
+                        {
+                            Width = 20,
+                            Height = 20,
+                            Margin = new Thickness(SnakePoint.X - 10, SnakePoint.Y - 10, 0, 0),
+                            Fill = Color,
+                            Stroke = Brushes.Black
+                        };
+                        canvas.Children.Add(ellipse);
+                    }
+                }
             });
         }
     }
